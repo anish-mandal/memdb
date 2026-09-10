@@ -3,8 +3,10 @@
 % -------------------------------------------------
 % PACKAGES
 % -------------------------------------------------
+
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{tikz}
 \usepackage{booktabs}
@@ -16,6 +18,7 @@
 % -------------------------------------------------
 % COLOURS
 % -------------------------------------------------
+
 \definecolor{GEUBlue}{RGB}{20,55,105}
 \definecolor{GEULightBlue}{RGB}{238,244,251}
 \definecolor{GEUGrey}{RGB}{90,90,90}
@@ -23,6 +26,7 @@
 % -------------------------------------------------
 % BEAMER SETTINGS
 % -------------------------------------------------
+
 \usetheme{default}
 
 \setbeamertemplate{navigation symbols}{}
@@ -47,19 +51,49 @@
 }
 
 % -------------------------------------------------
+% GRAPHIC ERA LOGO
+% -------------------------------------------------
+
+% Upload graphicera_logo.png to the same Overleaf project.
+
+\newcommand{\GEULogo}{graphicera_logo.png}
+
+% -------------------------------------------------
 % FRAME TITLE
 % -------------------------------------------------
+
 \setbeamertemplate{frametitle}{
     \vspace{0.2cm}
-    \insertframetitle
-    \par
+    \insertframetitle\par
     \vspace{0.08cm}
     \textcolor{GEUBlue}{\rule{\textwidth}{0.8pt}}
 }
 
 % -------------------------------------------------
+% ABSOLUTE LOGO ON EVERY NORMAL SLIDE
+% -------------------------------------------------
+
+% The logo is positioned relative to the physical page.
+% It does NOT reserve any space in the slide layout.
+
+\setbeamertemplate{background}{%
+    \begin{tikzpicture}[remember picture,overlay]
+        \node[
+            anchor=north east,
+            inner sep=0pt,
+            xshift=-0.30cm,
+            yshift=-0.12cm
+        ] at (current page.north east)
+        {
+            \includegraphics[height=1cm]{\GEULogo}
+        };
+    \end{tikzpicture}%
+}
+
+% -------------------------------------------------
 % FOOTER
 % -------------------------------------------------
+
 \setbeamertemplate{footline}{
     \leavevmode
     \hbox{
@@ -69,31 +103,28 @@
             dp=0.1cm,
             leftskip=0.3cm
         ]{author in head/foot}
-
         \tiny
         Department of Computer Science \& Engineering |
         Graphic Era (Deemed to be University)
-
         \end{beamercolorbox}
-
+        %
         \begin{beamercolorbox}[
             wd=0.18\paperwidth,
             ht=0.32cm,
             dp=0.1cm,
             rightskip=0.3cm
         ]{date in head/foot}
-
         \hfill
         \tiny
         \insertframenumber/\inserttotalframenumber
-
         \end{beamercolorbox}
     }
 }
 
-% -------------------------------------------------
+% =================================================
 % DOCUMENT INFORMATION
-% -------------------------------------------------
+% =================================================
+
 \title{Project-Based Learning}
 \subtitle{Phase-I Evaluation}
 
@@ -123,7 +154,11 @@
 
 \begin{tikzpicture}[remember picture,overlay]
 
-% Top line
+
+% -------------------------------------------------
+% TOP LINE
+% -------------------------------------------------
+
 \draw[
     GEUBlue,
     line width=3pt
@@ -132,7 +167,10 @@
 --
 (current page.north east);
 
-% Main title
+% -------------------------------------------------
+% MAIN TITLE
+% -------------------------------------------------
+
 \node[
     align=center,
     text width=0.85\paperwidth
@@ -168,7 +206,10 @@ Team ID: DSCPP-III-2026-T229}
 
 };
 
-% University information
+% -------------------------------------------------
+% UNIVERSITY INFORMATION
+% -------------------------------------------------
+
 \node[
     align=center,
     anchor=south
@@ -193,6 +234,7 @@ Academic Session 2026--27
 \end{tikzpicture}
 
 \end{frame}
+
 
 % -------------------------------------------------
 % SLIDE 2 - TEAM
@@ -232,15 +274,15 @@ Academic Session 2026--27
 
 1. Anish Mandal (ML1) -- 2028642
 
-\\[2mm]
+\vspace{2mm}
 
 2. Arnav Rawat (ML4) -- 2028398
 
-\\[2mm]
+\vspace{2mm}
 
 3. Priyanshi (DS2) -- 2028468
 
-\\[2mm]
+\vspace{2mm}
 
 4. Suhani Rawat (DS1) -- 2028504
 
@@ -258,7 +300,7 @@ Academic Session 2026--27
 
 \hfill
 
-\textbf{Number of Interactions: 1}
+\textbf{Number of Interactions: 2}
 
 \end{block}
 
@@ -271,9 +313,7 @@ Arnav Rawat is the team lead.
 
 \end{frame}
 
-% -------------------------------------------------
-% SLIDE 3 - PROBLEM
-% -------------------------------------------------
+
 % -------------------------------------------------
 % SLIDE 3 - PROBLEM STATEMENT & MOTIVATION
 % -------------------------------------------------
@@ -343,6 +383,7 @@ fundamental data structures and cache policies.
 
 \end{frame}
 
+
 % -------------------------------------------------
 % SLIDE 4 - OBJECTIVES
 % -------------------------------------------------
@@ -379,6 +420,7 @@ and measurable metrics.
 \colorbox{GEULightBlue}{
 \parbox{0.82\textwidth}{
 \centering
+
 \textbf{\color{GEUBlue}Key Objective}
 
 \vspace{1mm}
@@ -391,6 +433,7 @@ using explicitly implemented data structures and cache policies.
 \end{center}
 
 \end{frame}
+
 
 % -------------------------------------------------
 % SLIDE 5 - PROPOSED SOLUTION
@@ -463,6 +506,7 @@ The listed features form the proposed implementation scope.
 
 \end{frame}
 
+
 % -------------------------------------------------
 % SLIDE 6 - PBL INTEGRATION
 % -------------------------------------------------
@@ -504,6 +548,7 @@ higher-level cache management and policy abstraction.
 \end{center}
 
 \end{frame}
+
 
 % -------------------------------------------------
 % SLIDE 7 - ARCHITECTURE
@@ -614,6 +659,7 @@ higher-level cache management and policy abstraction.
 
 \end{frame}
 
+
 % -------------------------------------------------
 % SLIDE 8 - TECHNOLOGY
 % -------------------------------------------------
@@ -689,6 +735,7 @@ algorithms and data structures.
 \end{center}
 
 \end{frame}
+
 
 % -------------------------------------------------
 % SLIDE 9 - PROGRESS
@@ -772,11 +819,13 @@ Documentation, testing and project support \\
 
 \end{frame}
 
+
 % -------------------------------------------------
 % SLIDE 10 - ROADMAP
 % -------------------------------------------------
 
-\begin{frame}{Roadmap, Outcomes \& References}
+\begin{frame}
+{Roadmap, Outcomes \& References}
 
 \begin{columns}[T]
 
@@ -862,6 +911,7 @@ Questions \& Suggestions
 \end{columns}
 
 \end{frame}
+
 
 % -------------------------------------------------
 % END

@@ -1,0 +1,94 @@
+# Build directories
+build/
+cmake-build-*/
+out/
+dist/
+debug/
+release/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+Makefile
+install_manifest.txt
+compile_commands.json
+*.cmake
+!CMakeLists.txt
+
+# Compiled binaries and object files
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+*.exe
+*.out
+*.app
+*.elf
+*.bin
+*.d
+
+# Coverage and profiling output
+*.gcda
+*.gcno
+*.gcov
+coverage/
+*.prof
+*.profraw
+
+# Test and benchmark output
+Testing/
+test-results/
+benchmark-results/
+benchmarks/results/*
+!benchmarks/results/.gitkeep
+
+# IDE and editor files
+.vscode/
+.idea/
+*.code-workspace
+*.suo
+*.user
+*.userossc
+*.sln
+*.vcxproj*
+*.xcodeproj/
+*.xcworkspace/
+.vs/
+
+# Editor backup and temporary files
+*~
+*.swp
+*.swo
+*.tmp
+*.bak
+.cache/
+.clangd/
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs and runtime files
+*.log
+*.pid
+*.seed
+*.stackdump
+
+# Package manager and tool caches
+vcpkg_installed/
+conan.lock
+conanbuildinfo.*
+.conan/
+.cache/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example

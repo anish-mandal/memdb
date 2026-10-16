@@ -1,9 +1,8 @@
 #pragma once
 
-#include "cache_entry.hpp"
+#include "linked_list.hpp"
 
 #include <cstddef>
-#include <list>
 #include <string>
 #include <vector>
 
@@ -24,6 +23,6 @@ public:
 private:
     std::size_t bucket_index(const std::string& key) const;
 
-    std::vector<std::list<CacheEntry>> buckets_;
+    std::vector<LinkedList> buckets_;
     std::size_t entry_count_;
 };

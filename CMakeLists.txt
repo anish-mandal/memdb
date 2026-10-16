@@ -53,3 +53,21 @@ add_test(
     NAME linked_list_tests
     COMMAND test_linked_list
 )
+
+add_executable(test_cache tests/test_cache.cpp)
+target_link_libraries(test_cache PRIVATE memdb)
+add_test(NAME cache_tests COMMAND test_cache)
+
+add_executable(test_eviction tests/test_eviction.cpp)
+target_link_libraries(test_eviction PRIVATE memdb)
+add_test(NAME eviction_tests COMMAND test_eviction)
+
+add_executable(test_ttl tests/test_ttl.cpp)
+target_link_libraries(test_ttl PRIVATE memdb)
+add_test(NAME ttl_tests COMMAND test_ttl)
+
+add_executable(memdb_app app/main.cpp)
+target_link_libraries(memdb_app PRIVATE memdb)
+
+add_executable(memdb_benchmark benchmarks/benchmark.cpp)
+target_link_libraries(memdb_benchmark PRIVATE memdb)

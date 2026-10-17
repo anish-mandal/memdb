@@ -1,4 +1,5 @@
- 
+
+
 #include "fifo_policy.hpp"
 
 void FIFOPolicy::on_insert(const std::string& key) {

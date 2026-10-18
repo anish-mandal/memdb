@@ -17,3 +17,4 @@ private:
     std::deque<std::string> order_;
     std::unordered_set<std::string> present_;
 };
+

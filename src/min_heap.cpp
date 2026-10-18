@@ -18,5 +18,6 @@ ExpirationRecord MinHeap::pop() {
     ExpirationRecord result = heap_.back();
     heap_.pop_back();
     return result;
+
 }
 void MinHeap::clear() { heap_.clear(); }

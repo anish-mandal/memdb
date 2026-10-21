@@ -5,46 +5,20 @@ HashTable::HashTable(std::size_t bucket_count)
 
 void HashTable::insert_or_assign(const std::string& key,
                                  const std::string& value) {
-    std::list<CacheEntry>& bucket = buckets_[bucket_index(key)];
-
-    for (CacheEntry& entry : bucket) {
-        if (entry.key == key) {
-            entry.value = value;
-            return;
-        }
+    LinkedList& bucket = buckets_[bucket_index(key)];
+    const bool existing = bucket.contains(key);
+    bucket.insert_or_assign(key, value);
+    if (!existing) {
+        ++entry_count_;
     }
-
-
-    bucket.push_back(CacheEntry{
-        key,
-        value,
-        std::chrono::steady_clock::now(),
-        std::chrono::steady_clock::time_point{},
-        false
-    });
-    ++entry_count_;
 }
 
 CacheEntry* HashTable::find(const std::string& key) {
-    std::list<CacheEntry>& bucket = buckets_[bucket_index(key)];
-
-    for (CacheEntry& entry : bucket) {
-        if (entry.key == key) {
-            return &entry;
-        }
-    }
-    return nullptr;
+    return buckets_[bucket_index(key)].find(key);
 }
 
 const CacheEntry* HashTable::find(const std::string& key) const {
-    const std::list<CacheEntry>& bucket = buckets_[bucket_index(key)];
-
-    for (const CacheEntry& entry : bucket) {
-        if (entry.key == key) {
-            return &entry;
-        }
-    }
-    return nullptr;
+    return buckets_[bucket_index(key)].find(key);
 }
 
 bool HashTable::contains(const std::string& key) const {
@@ -52,14 +26,9 @@ bool HashTable::contains(const std::string& key) const {
 }
 
 bool HashTable::remove(const std::string& key) {
-    std::list<CacheEntry>& bucket = buckets_[bucket_index(key)];
-
-    for (auto iterator = bucket.begin(); iterator != bucket.end(); ++iterator) {
-        if (iterator->key == key) {
-            bucket.erase(iterator);
-            --entry_count_;
-            return true;
-        }
+    if (buckets_[bucket_index(key)].remove(key)) {
+        --entry_count_;
+        return true;
     }
     return false;
 }
@@ -73,7 +42,7 @@ bool HashTable::empty() const {
 }
 
 void HashTable::clear() {
-    for (std::list<CacheEntry>& bucket : buckets_) {
+    for (LinkedList& bucket : buckets_) {
         bucket.clear();
     }
     entry_count_ = 0;
